@@ -1,32 +1,32 @@
 function customizeGrid() {
-    let size = obtainGridSize();
+    let dimensions = obtainGridSize();
 
-    if (size != null) {
-        const gridProperties = computeGridProperties(size); 
+    if (dimensions != null) {
+        const gridProperties = computeGridProperties(dimensions); 
         drawSquares(gridProperties[0]);
         alterSquareSize(gridProperties[1]);
     }
 }
 
-function obtainGridSize() {
-    let size = 1000;
+function obtainGridDimensions() {
+    let dimensions = 1000;
     do {
-        size = prompt("Enter your desired grid size: ", "16");
+        dimensions = prompt("Enter your desired grid dimensions: ", "16");
 
-        if (size > 100) {
+        if (dimensions > 100) {
             alert("Your input is too large. Please select a number smaller than 101.")
         }
-    } while(size > 100);
+    } while(dimensions > 100);
 
-    return size;
+    return dimensions;
 }
 
-function computeGridProperties(size) {
-    let numberOfSquares = size * size;
+function computeGridProperties(dim) {
+    let numberOfSquares = dim * dim;
 
     const gridSize = document.querySelector(".grid");
-    let style = getComputedStyle(gridSize);
-    const exactSquareSize = removePx(style.width) / size;
+    const styleGridSize = getComputedStyle(gridSize);
+    const exactSquareSize = removePx(styleGridSize.width) / dim;
     let squareSize = Math.floor(exactSquareSize * 1000) / 1000; //Floored to not allow any excess.
 
     return [numberOfSquares, squareSize];
@@ -50,13 +50,13 @@ function drawSquares(numberOfSquares) {
 }
 
 function checkWidth() {
-    const gridSize = document.querySelector(".grid");
-    let style = getComputedStyle(gridSize);
+    const grid = document.querySelector(".grid");
+    let gridSize = getComputedStyle(grid);
  
     const numberOfSquares = Array.from(document.querySelectorAll(".squares")).length;
-    const size = Math.sqrt(numberOfSquares);
+    const dim = Math.sqrt(numberOfSquares);
 
-    const exactSquareSize = removePx(style.width) / size;
+    const exactSquareSize = removePx(gridSize.width) / dim;
     let squareSize = Math.floor(exactSquareSize * 1000) / 1000;
     alterSquareSize(squareSize);
 }
@@ -77,7 +77,7 @@ function changeColor(e) {
     e.target.style.background = "black";
 }
 
-//Default setup. Appears as soon as user opens the webpage.
+//Default setup. Appears as soon as the user opens the webpage.
 const container = document.querySelector(".grid");
 
 for (let i=0; i<256; i++) {
