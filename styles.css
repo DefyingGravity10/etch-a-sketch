@@ -25,7 +25,6 @@
 .grid {
     flex-wrap: wrap;
     max-width: 512px;   
-    border: 15px solid grey;
     border-radius: 20px;
 }
 
