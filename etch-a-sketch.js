@@ -24,7 +24,9 @@ function obtainGridSize() {
 function computeGridProperties(size) {
     let numberOfSquares = size * size;
 
-    const exactSquareSize = 512 / size;
+    const gridSize = document.querySelector(".grid");
+    let style = getComputedStyle(gridSize);
+    const exactSquareSize = removePx(style.width) / size;
     let squareSize = Math.floor(exactSquareSize * 1000) / 1000; //Floored to not allow any excess.
 
     return [numberOfSquares, squareSize];
@@ -45,6 +47,24 @@ function drawSquares(numberOfSquares) {
 
     const squares = Array.from(document.querySelectorAll(".squares"));
     squares.forEach(square => square.addEventListener("mouseover", changeColor));
+}
+
+function checkWidth() {
+    const gridSize = document.querySelector(".grid");
+    let style = getComputedStyle(gridSize);
+ 
+    const numberOfSquares = Array.from(document.querySelectorAll(".squares")).length;
+    const size = Math.sqrt(numberOfSquares);
+
+    const exactSquareSize = removePx(style.width) / size;
+    let squareSize = Math.floor(exactSquareSize * 1000) / 1000;
+    alterSquareSize(squareSize);
+}
+
+function removePx(gridSize) {
+    const array = gridSize.split("");
+    const newArray = array.slice(0, (array.length-2));
+    return newArray.toString().replace(/,/g, "");
 }
 
 function alterSquareSize(squareSize) {
@@ -72,3 +92,5 @@ squares.forEach(square => square.addEventListener("mouseover", changeColor));
 
 const sizeButton = document.querySelector(".size");
 sizeButton.addEventListener("click", customizeGrid);
+
+window.addEventListener("resize", checkWidth);
