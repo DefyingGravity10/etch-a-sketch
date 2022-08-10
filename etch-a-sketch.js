@@ -81,6 +81,10 @@ function clearGrid(e) {
     squares.forEach(square => square.style.background = "silver");
 }
 
+function toggleGridLines(e) {
+    squares.forEach(square => square.classList.toggle("no-outline"));
+}
+
 //Default setup. Appears as soon as the user opens the webpage.
 const container = document.querySelector(".grid");
 
@@ -99,5 +103,8 @@ sizeButton.addEventListener("click", customizeGrid);
 
 const clearButton = document.querySelector(".clear");
 clearButton.addEventListener("click", clearGrid);
+
+const GridLineButton = document.querySelector(".grid-lines");
+GridLineButton.addEventListener("click", toggleGridLines);
 
 window.addEventListener("resize", checkWidth);
