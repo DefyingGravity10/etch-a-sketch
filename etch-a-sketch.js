@@ -77,6 +77,10 @@ function changeColor(e) {
     e.target.style.background = "black";
 }
 
+function clearGrid(e) {
+    squares.forEach(square => square.style.background = "silver");
+}
+
 //Default setup. Appears as soon as the user opens the webpage.
 const container = document.querySelector(".grid");
 
@@ -92,5 +96,8 @@ squares.forEach(square => square.addEventListener("mouseover", changeColor));
 
 const sizeButton = document.querySelector(".size");
 sizeButton.addEventListener("click", customizeGrid);
+
+const clearButton = document.querySelector(".clear");
+clearButton.addEventListener("click", clearGrid);
 
 window.addEventListener("resize", checkWidth);

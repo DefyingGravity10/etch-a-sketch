@@ -15,9 +15,11 @@
     box-sizing: border-box;
     width: 280px;
     background-color: blanchedalmond;
-    justify-content: center;
-    align-items: flex-start;
     padding: 24px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
 }
 
 .grid {
