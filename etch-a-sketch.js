@@ -25,7 +25,7 @@ function computeGridProperties(size) {
     let numberOfSquares = size * size;
 
     const exactSquareSize = 512 / size;
-    let squareSize = Math.floor(exactSquareSize * 100) / 100; //Floored to not allow any excess.
+    let squareSize = Math.floor(exactSquareSize * 1000) / 1000; //Floored to not allow any excess.
 
     return [numberOfSquares, squareSize];
 }

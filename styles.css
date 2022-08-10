@@ -1,21 +1,35 @@
-.container {
+.container, .grid-container, .settings, .grid {
     display: flex;
+}
+
+.container {
+    justify-content: stretch;
+}
+
+.grid-container {
+    width: 75%;
+    justify-content: center;
 }
 
 .settings {
-    width: 240px;
+    box-sizing: border-box;
+    width: 280px;
     background-color: blanchedalmond;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px;
 }
 
 .grid {
-    display: flex;
     flex-wrap: wrap;
     width: 512px;   
+    border: 15px solid grey;
+    border-radius: 20px;
 }
 
 .squares {
     box-sizing: border-box;
-    background-color: rgb(164, 164, 164);
+    background-color: silver;
     outline: 1px solid;
     width: 32px;
     height: 32px;
