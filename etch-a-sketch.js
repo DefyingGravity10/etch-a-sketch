@@ -1,5 +1,5 @@
 function customizeGrid() {
-    let dimensions = obtainGridSize();
+    let dimensions = obtainGridDimensions();
 
     if (dimensions != null) {
         const gridProperties = computeGridProperties(dimensions); 
