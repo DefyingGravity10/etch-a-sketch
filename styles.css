@@ -1,10 +1,19 @@
 .container {
     display: flex;
+}
+
+.settings {
+    width: 240px;
+    background-color: blanchedalmond;
+}
+
+.grid {
+    display: flex;
     flex-wrap: wrap;
     width: 512px;   
 }
 
-.content {
+.squares {
     box-sizing: border-box;
     background-color: rgb(164, 164, 164);
     outline: 1px solid;
