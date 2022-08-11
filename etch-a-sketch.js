@@ -77,11 +77,13 @@ function changeColor(e) {
     e.target.style.background = "black";
 }
 
-function clearGrid(e) {
+function clearGrid() {
+    const squares = Array.from(document.querySelectorAll(".squares"));
     squares.forEach(square => square.style.background = "silver");
 }
 
-function toggleGridLines(e) {
+function toggleGridLines() {
+    const squares = Array.from(document.querySelectorAll(".squares"));
     squares.forEach(square => square.classList.toggle("no-outline"));
 }
 
