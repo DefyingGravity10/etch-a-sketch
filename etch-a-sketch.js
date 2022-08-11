@@ -46,7 +46,7 @@ function drawSquares(numberOfSquares) {
     }
 
     const squares = Array.from(document.querySelectorAll(".squares"));
-    squares.forEach(square => square.addEventListener("mouseover", changeColor));
+    squares.forEach(square => square.addEventListener("mouseover", fillColor));
 }
 
 function checkWidth() {
@@ -83,7 +83,7 @@ function toggleGridLines() {
     squares.forEach(square => square.classList.toggle("no-outline"));
 }
 
-function changeColor(e) {
+function fillColor(e) {
     e.target.style.background = `${colorPicker.toHEXAString()}`;
 }
 
@@ -102,13 +102,15 @@ for (let i=0; i<256; i++) {
     container.appendChild(div);
 }
 
+
 window.addEventListener("resize", checkWidth);
+
 const colorPicker = new jscolor(".pen-color", {preset: "dark", format: "hexa", value: "#000000", padding:12});
 const backgroundColorPicker = new jscolor(".background-color", {preset: "dark", format: "hexa", padding:12});
 jscolor.trigger("input change");
 
 const squares = Array.from(document.querySelectorAll(".squares"));
-squares.forEach(square => square.addEventListener("mouseover", changeColor));
+squares.forEach(square => square.addEventListener("mouseover", fillColor));
 
 const sizeButton = document.querySelector(".size");
 sizeButton.addEventListener("click", customizeGrid);
