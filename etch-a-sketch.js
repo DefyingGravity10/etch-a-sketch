@@ -73,10 +73,6 @@ function alterSquareSize(squareSize) {
         square.setAttribute("style", `width: ${squareSize}px; height: ${squareSize}px;`));
 }
 
-function changeColor(e) {
-    e.target.style.background = "black";
-}
-
 function clearGrid() {
     const squares = Array.from(document.querySelectorAll(".squares"));
     squares.forEach(square => square.style.background = "silver");
@@ -85,6 +81,10 @@ function clearGrid() {
 function toggleGridLines() {
     const squares = Array.from(document.querySelectorAll(".squares"));
     squares.forEach(square => square.classList.toggle("no-outline"));
+}
+
+function changeColor(e) {
+    e.target.style.background = `${samplePicker.toHEXString()}`;
 }
 
 //Default setup. Appears as soon as the user opens the webpage.
@@ -110,3 +110,6 @@ const GridLineButton = document.querySelector(".grid-lines");
 GridLineButton.addEventListener("click", toggleGridLines);
 
 window.addEventListener("resize", checkWidth);
+
+const samplePicker = new jscolor(".color-picker");
+//samplePicker.trigger("input change");
