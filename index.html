@@ -15,7 +15,9 @@
             <button class="size">Change Size</button>
             <button class="clear">Clear</button>
             <button class="grid-lines">Toggle Grid Lines</button>
-            <input class="color-picker" data-jscolor="">
+            Pen Color <input class="pen-color" data-jscolor="">
+            Background Color <input class="background-color" 
+                onInput="updateBgColor(this.color)" data-jscolor="">
         </div>
         <div class="grid-container"><div class="grid"></div></div>
     </div>

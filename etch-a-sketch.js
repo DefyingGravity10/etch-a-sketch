@@ -75,7 +75,7 @@ function alterSquareSize(squareSize) {
 
 function clearGrid() {
     const squares = Array.from(document.querySelectorAll(".squares"));
-    squares.forEach(square => square.style.background = "silver");
+    squares.forEach(square => square.style.background = `${backgroundColorPicker.toHEXAString()}`);
 }
 
 function toggleGridLines() {
@@ -85,6 +85,11 @@ function toggleGridLines() {
 
 function changeColor(e) {
     e.target.style.background = `${colorPicker.toHEXAString()}`;
+}
+
+function updateBgColor() {
+    const squares = Array.from(document.querySelectorAll(".squares"));
+    squares.forEach(square => square.style.background = `${backgroundColorPicker.toHEXAString()}`);
 }
 
 //Default setup. Appears as soon as the user opens the webpage.
@@ -97,6 +102,11 @@ for (let i=0; i<256; i++) {
     container.appendChild(div);
 }
 
+window.addEventListener("resize", checkWidth);
+const colorPicker = new jscolor(".pen-color", {preset: "dark", format: "hexa", value: "#000000", padding:12});
+const backgroundColorPicker = new jscolor(".background-color", {preset: "dark", format: "hexa", padding:12});
+jscolor.trigger("input change");
+
 const squares = Array.from(document.querySelectorAll(".squares"));
 squares.forEach(square => square.addEventListener("mouseover", changeColor));
 
@@ -108,7 +118,3 @@ clearButton.addEventListener("click", clearGrid);
 
 const GridLineButton = document.querySelector(".grid-lines");
 GridLineButton.addEventListener("click", toggleGridLines);
-
-window.addEventListener("resize", checkWidth);
-
-const colorPicker = new jscolor(".color-picker", {preset: "dark", format: "hexa", value: "#000000", padding:12});

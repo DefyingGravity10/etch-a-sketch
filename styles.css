@@ -30,8 +30,7 @@
 
 .squares {
     box-sizing: border-box;
-    background-color: silver;
-    outline: 1px solid;
+    outline: 1px solid grey;
     width: 32px;
     height: 32px;
 }
