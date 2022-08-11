@@ -81,9 +81,20 @@ function setMouseUp() {
     mouseDown = false;
 }
 
+function activateEraser() {
+    eraserActivated = true;
+}
+
+function deactivateEraser() {
+    eraserActivated = false;
+}
+
 function fillColor(e) {
-    if (mouseDown) {
+    if (mouseDown && !eraserActivated) {
         e.target.style.background = `${colorPicker.toHEXAString()}`;
+    }
+    else if (mouseDown && eraserActivated) {
+        e.target.style.background = `${backgroundColorPicker.toHEXAString()}`;
     }
 }
 
@@ -117,6 +128,7 @@ for (let i=0; i<256; i++) {
 }
 
 let mouseDown = false;
+let eraserActivated = false;
 window.addEventListener("resize", checkWidth);
 
 const colorPicker = new jscolor(".pen-color", {preset: "dark", format: "hexa", value: "#000000", padding:12});
@@ -134,3 +146,10 @@ clearButton.addEventListener("click", clearGrid);
 
 const gridLineButton = document.querySelector(".grid-lines");
 gridLineButton.addEventListener("click", toggleGridLines);
+
+
+const penButton = document.querySelector(".pen");
+penButton.addEventListener("click", deactivateEraser);
+
+const eraserButton = document.querySelector(".eraser");
+eraserButton.addEventListener("click", activateEraser);
