@@ -73,6 +73,20 @@ function alterSquareSize(squareSize) {
         square.setAttribute("style", `width: ${squareSize}px; height: ${squareSize}px;`));
 }
 
+function setMouseDown() {
+    mouseDown = true;
+}
+
+function setMouseUp() {
+    mouseDown = false;
+}
+
+function fillColor(e) {
+    if (mouseDown) {
+        e.target.style.background = `${colorPicker.toHEXAString()}`;
+    }
+}
+
 function clearGrid() {
     const squares = Array.from(document.querySelectorAll(".squares"));
     squares.forEach(square => square.style.background = `${backgroundColorPicker.toHEXAString()}`);
@@ -83,13 +97,13 @@ function toggleGridLines() {
     squares.forEach(square => square.classList.toggle("no-outline"));
 }
 
-function fillColor(e) {
-    e.target.style.background = `${colorPicker.toHEXAString()}`;
-}
-
 function updateBgColor() {
     const squares = Array.from(document.querySelectorAll(".squares"));
     squares.forEach(square => square.style.background = `${backgroundColorPicker.toHEXAString()}`);
+}
+
+function eraseSquare() {
+    e.target.style.background = `${backgroundColorPicker.toHEXAString()}`;   
 }
 
 //Default setup. Appears as soon as the user opens the webpage.
@@ -102,7 +116,7 @@ for (let i=0; i<256; i++) {
     container.appendChild(div);
 }
 
-
+let mouseDown = false;
 window.addEventListener("resize", checkWidth);
 
 const colorPicker = new jscolor(".pen-color", {preset: "dark", format: "hexa", value: "#000000", padding:12});
@@ -118,5 +132,5 @@ sizeButton.addEventListener("click", customizeGrid);
 const clearButton = document.querySelector(".clear");
 clearButton.addEventListener("click", clearGrid);
 
-const GridLineButton = document.querySelector(".grid-lines");
-GridLineButton.addEventListener("click", toggleGridLines);
+const gridLineButton = document.querySelector(".grid-lines");
+gridLineButton.addEventListener("click", toggleGridLines);
