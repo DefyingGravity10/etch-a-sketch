@@ -84,7 +84,7 @@ function toggleGridLines() {
 }
 
 function changeColor(e) {
-    e.target.style.background = `${samplePicker.toHEXString()}`;
+    e.target.style.background = `${colorPicker.toHEXAString()}`;
 }
 
 //Default setup. Appears as soon as the user opens the webpage.
@@ -111,5 +111,4 @@ GridLineButton.addEventListener("click", toggleGridLines);
 
 window.addEventListener("resize", checkWidth);
 
-const samplePicker = new jscolor(".color-picker");
-//samplePicker.trigger("input change");
+const colorPicker = new jscolor(".color-picker", {preset: "dark", format: "hexa", value: "#000000", padding:12});
