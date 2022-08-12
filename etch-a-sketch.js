@@ -41,6 +41,7 @@ function drawSquares(numberOfSquares) {
     for (let i=0; i<numberOfSquares; i++) {
         const div = document.createElement("div");
         div.classList.add("squares");
+        div.style.background = `${backgroundColorPicker.toHEXAString()}`;
         div.textContent = "";
         grid.appendChild(div);
     }
@@ -61,6 +62,7 @@ function checkWidth() {
 }
 
 function removePx(gridSize) {
+    //A function that removes the word "px" after using getComputedStyle
     const array = gridSize.split("");
     const newArray = array.slice(0, (array.length-2));
     return newArray.toString().replace(/,/g, "");
@@ -126,8 +128,10 @@ let mouseDown = false;
 let eraserActivated = false;
 window.addEventListener("resize", checkWidth);
 
-const colorPicker = new jscolor(".pen-color", {preset: "dark", format: "hexa", value: "#000000", padding:12});
-const backgroundColorPicker = new jscolor(".background-color", {preset: "dark", format: "hexa", padding:12});
+const colorPicker = new jscolor(".pen-color", {preset: "dark", format: "hexa", value: "#000000", padding:12,
+    palette:"#fff #808080 #000 #996e36 #f55525 #ffe438 #88dd20 #22e0cd #269aff #bb1cd4"});
+const backgroundColorPicker = new jscolor(".background-color", {preset: "dark", format: "hexa", padding:12,
+    palette:"#fff #808080 #000 #996e36 #f55525 #ffe438 #88dd20 #22e0cd #269aff #bb1cd4"});
 jscolor.trigger("input change");
 
 const squares = Array.from(document.querySelectorAll(".squares"));
