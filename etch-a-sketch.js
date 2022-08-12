@@ -34,15 +34,15 @@ function computeGridProperties(dim) {
 
 function drawSquares(numberOfSquares) {
     //Delete all the squares in the previous grid so that we can place a new one.
-    while (container.hasChildNodes()) {
-        container.removeChild(container.firstChild);
+    while (grid.hasChildNodes()) {
+        grid.removeChild(grid.firstChild);
     }
     
     for (let i=0; i<numberOfSquares; i++) {
         const div = document.createElement("div");
         div.classList.add("squares");
         div.textContent = "";
-        container.appendChild(div);
+        grid.appendChild(div);
     }
 
     const squares = Array.from(document.querySelectorAll(".squares"));
@@ -50,7 +50,6 @@ function drawSquares(numberOfSquares) {
 }
 
 function checkWidth() {
-    const grid = document.querySelector(".grid");
     let gridSize = getComputedStyle(grid);
  
     const numberOfSquares = Array.from(document.querySelectorAll(".squares")).length;
@@ -71,6 +70,9 @@ function alterSquareSize(squareSize) {
     const sq = Array.from(document.querySelectorAll(".squares"));
     sq.forEach(square => 
         square.setAttribute("style", `width: ${squareSize}px; height: ${squareSize}px;`));
+
+    //Set height of the grid to be the same as its width
+    grid.style.height = getComputedStyle(grid).width;
 }
 
 function setMouseDown() {
@@ -118,13 +120,13 @@ function eraseSquare() {
 }
 
 //Default setup. Appears as soon as the user opens the webpage.
-const container = document.querySelector(".grid");
+const grid = document.querySelector(".grid");
 
 for (let i=0; i<256; i++) {
     const div = document.createElement("div");
     div.classList.add("squares");
     div.textContent = "";
-    container.appendChild(div);
+    grid.appendChild(div);
 }
 
 let mouseDown = false;
@@ -146,7 +148,6 @@ clearButton.addEventListener("click", clearGrid);
 
 const gridLineButton = document.querySelector(".grid-lines");
 gridLineButton.addEventListener("click", toggleGridLines);
-
 
 const penButton = document.querySelector(".pen");
 penButton.addEventListener("click", deactivateEraser);
