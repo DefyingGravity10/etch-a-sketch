@@ -69,7 +69,8 @@ function removePx(gridSize) {
 function alterSquareSize(squareSize) {
     const sq = Array.from(document.querySelectorAll(".squares"));
     sq.forEach(square => 
-        square.setAttribute("style", `width: ${squareSize}px; height: ${squareSize}px;`));
+        square.setAttribute("style", `width: ${squareSize}px; height: ${squareSize}px;
+            background: ${getComputedStyle(square).background};`));
 
     //Set height of the grid to be the same as its width
     grid.style.height = getComputedStyle(grid).width;
@@ -81,14 +82,6 @@ function setMouseDown() {
 
 function setMouseUp() {
     mouseDown = false;
-}
-
-function activateEraser() {
-    eraserActivated = true;
-}
-
-function deactivateEraser() {
-    eraserActivated = false;
 }
 
 function fillColor(e) {
@@ -150,7 +143,11 @@ const gridLineButton = document.querySelector(".grid-lines");
 gridLineButton.addEventListener("click", toggleGridLines);
 
 const penButton = document.querySelector(".pen");
-penButton.addEventListener("click", deactivateEraser);
+penButton.addEventListener("click", () => {
+    eraserActivated = false;
+});
 
 const eraserButton = document.querySelector(".eraser");
-eraserButton.addEventListener("click", activateEraser);
+eraserButton.addEventListener("click", () => {
+    eraserActivated = true;
+});
