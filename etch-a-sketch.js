@@ -147,11 +147,15 @@ const gridLineButton = document.querySelector(".grid-lines");
 gridLineButton.addEventListener("click", toggleGridLines);
 
 const penButton = document.querySelector(".pen");
+const eraserButton = document.querySelector(".eraser");
+
 penButton.addEventListener("click", () => {
     eraserActivated = false;
+    penButton.classList.add("selected");
+    eraserButton.classList.remove("selected");
 });
-
-const eraserButton = document.querySelector(".eraser");
 eraserButton.addEventListener("click", () => {
     eraserActivated = true;
+    penButton.classList.remove("selected");
+    eraserButton.classList.add("selected");
 });

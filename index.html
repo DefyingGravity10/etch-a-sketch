@@ -12,14 +12,29 @@
 <body onmousedown="setMouseDown()" onmouseup="setMouseUp()">
     <div class="container">
         <div class="settings">
-            <button class="size">Change Size</button>
-            <button class="clear">Clear</button>
-            <button class="grid-lines">Toggle Grid Lines</button>
-            Pen Color <input class="pen-color" data-jscolor="">
-            Background Color <input class="background-color" 
-                onInput="updateBgColor(this.color)" data-jscolor="">
-            <button class="pen">Pen</button>
-            <button class="eraser">Eraser</button>
+            <div class="mode-container">
+                <div>Mode</div>
+                <div class="mode-container-2">
+                    <button class="pen selected">Pen</button>
+                    <button class="eraser">Eraser</button>
+                </div>          
+            </div>
+            <div class="color-picker-container">
+                <div class="color-picker-container-2">
+                    <div>Pen Color</div>
+                    <input class="pen-color" data-jscolor="">
+                </div>
+                <div class="color-picker-container-2">
+                    <div>Background Color</div>
+                    <input class="background-color" onInput="updateBgColor(this.color)" data-jscolor="">
+                </div>  
+            </div>
+            <div class="features-container">
+                Features
+                <button class="size">Change Size</button>
+                <button class="grid-lines">Toggle Grid Lines</button>
+                <button class="clear">Clear</button>
+            </div>
         </div>
         <div class="grid-container"><div class="grid"></div></div>
     </div>

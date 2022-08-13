@@ -1,31 +1,96 @@
-.container, .grid-container, .settings, .grid {
+@font-face {
+    font-family: "trispace";
+    src: url("fonts/trispace-variablefont_wdthwght-webfont.woff2") format("woff2"),
+         url("fonts/trispace-variablefont_wdthwght-webfont.woff") format("woff");
+}
+
+@font-face {
+    font-family: "twinklestar";
+    src: url("fonts/twinklestar-regular-webfont.woff2") format("woff2"),
+         url("fonts/twinklestar-regular-webfont.woff") format("woff");
+}
+
+body {
+    margin: 0;
+    background-color: rgb(29, 29, 88);
+}
+
+.container, .grid-container, .settings, .grid, .mode-container, .mode-container-2,
+.color-picker-container, .color-picker-container-2, .features-container {
     display: flex;
+}
+
+.settings, .mode-container, .color-picker-container, .color-picker-container-2, 
+.features-container {
+    flex-direction: column;
+    align-items: center;
 }
 
 .container {
     justify-content: stretch;
+    min-height: 100vh;
 }
 
 .grid-container {
+    height: 100%;
     width: 75%;
     justify-content: center;
 }
 
 .settings {
     box-sizing: border-box;
-    width: 280px;
-    background-color: blanchedalmond;
+    width: 230px;
+    background-color: rgb(37, 37, 104);
     padding: 24px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 16px;
+    margin-right: 15px;
+    gap: 30px;
+    font-family: "twinklestar";
+    font-size: 20px;
+    color: rgb(196, 173, 43);
+}
+
+.mode-container, .color-picker-container-2 {
+    gap: 8px;
+}
+
+.mode-container-2, .features-container {
+    gap: 12px;
+}
+
+.color-picker-container {
+    gap: 20px;
+}
+
+button {
+    padding: 5px 12px;
+    border: 3px solid grey;
+    border-radius: 12px;
+    box-shadow: 0 0 8px inset silver;
+    font-family: "trispace";
+    font-weight: 800;
+    line-height: 16px;
+}
+
+button:hover {
+    background-color: rgb(240, 240, 230);
+    border-color: rgb(196, 173, 43);
+    box-shadow: 0 0 5px rgb(196, 173, 43);
+}
+
+input {
+    width: 100px;
+    padding: 5px 0px;
+    border: 3px solid grey;
+    border-radius: 10px;
 }
 
 .grid {
     flex-wrap: wrap;
-    max-width: 512px;   
-    border-radius: 20px;
+    max-width: 512px;  
+    max-height: 512px;
+    margin: 15px 15px 15px 0px;
+    border: solid 0.5em rgb(196, 173, 43);
+    border-radius: 8px;
 }
 
 .squares {
@@ -33,6 +98,12 @@
     outline: 1px solid grey;
     width: 32px;
     height: 32px;
+}
+
+.selected {
+    background-color: rgb(196, 173, 43);
+    border-color: grey;
+    box-shadow: 0 0 2px grey;
 }
 
 .no-outline {
