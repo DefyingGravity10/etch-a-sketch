@@ -27,7 +27,7 @@ function computeGridProperties(dim) {
     const gridSize = document.querySelector(".grid");
     const styleGridSize = getComputedStyle(gridSize);
     const exactSquareSize = removePx(styleGridSize.width) / dim;
-    let squareSize = Math.floor(exactSquareSize * 1000) / 1000; //Floored to not allow any excess.
+    let squareSize = Math.floor(exactSquareSize * 100) / 100; //Floored to not allow any excess.
 
     return [numberOfSquares, squareSize];
 }
@@ -57,7 +57,7 @@ function checkWidth() {
     const dim = Math.sqrt(numberOfSquares);
 
     const exactSquareSize = removePx(gridSize.width) / dim;
-    let squareSize = Math.floor(exactSquareSize * 1000) / 1000;
+    let squareSize = Math.floor(exactSquareSize * 100) / 100;
     alterSquareSize(squareSize);
 }
 
